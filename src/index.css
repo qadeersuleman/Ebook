@@ -1,0 +1,206 @@
+/* Google Fonts must come first. If the user is offline, the fallback fonts in --font-* are used. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   ILMORA DESIGN TOKENS
+   Theme colors: #DE7272 (Coral Rose) and #FFCA88 (Sunset Peach/Gold)
+   ------------------------------------------------------------------ */
+@theme {
+  /* Typography */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Noto Naskh Arabic', serif;
+
+  /* Ilmora Brand Colors */
+  --color-coral: #DE7272;
+  --color-coral-dark: #C64E4E;
+  --color-coral-vivid: #E85353;
+  --color-coral-light: #F99E9E;
+  --color-peach: #FFCA88;
+  --color-peach-dark: #F5A952;
+  --color-peach-light: #FFE4C4;
+
+  /* Classic Pakistan tones for cultural balance */
+  --color-pk-50: #fef4f4;
+  --color-pk-100: #fee2e2;
+  --color-pk-500: #de7272;
+  --color-pk-600: #c85959;
+  --color-pk-700: #a73c3c;
+  --color-pk-900: #732222;
+
+  --color-gold-100: #fff5e6;
+  --color-gold-400: #ffca88;
+  --color-gold-500: #f0af62;
+  --color-gold-700: #b57422;
+
+  --color-truck-100: #fee2e2;
+  --color-truck-500: #de7272;
+  --color-truck-700: #b93d3d;
+
+  --color-tile-100: #e0f2fe;
+  --color-tile-500: #0284c7;
+  --color-tile-700: #0369a1;
+
+  --color-plum-100: #fae8ff;
+  --color-plum-500: #c026d3;
+  --color-plum-700: #86198f;
+
+  /* Neutrals - High Contrast Luxury */
+  --color-cream: #FAF8F5;
+  --color-sand: #F0E6D8;
+  --color-ink: #110D1B;
+  --color-ink-soft: #4F445E;
+  --color-obsidian: #0B0813;
+  --color-midnight: #130E20;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .dark body {
+    background-color: #0E0A17;
+    color: #FAF8F5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 2px;
+  }
+
+  /* Urdu language specific styling adjustments */
+  [dir='rtl'] {
+    font-family: var(--font-urdu), var(--font-body);
+  }
+}
+
+/* ------------------------------------------------------------------
+   ILMORA CUSTOM UTILITIES & LUXURY E-COMMERCE STYLING
+   ------------------------------------------------------------------ */
+
+.bg-ilmora {
+  background-image: linear-gradient(135deg, #DE7272 0%, #FA8469 50%, #FFCA88 100%);
+}
+
+.bg-ilmora-hover {
+  background-image: linear-gradient(135deg, #D05F5F 0%, #EE7254 50%, #F5B970 100%);
+}
+
+.bg-ilmora-dark {
+  background-image: linear-gradient(135deg, #130E20 0%, #241A38 100%);
+}
+
+.text-ilmora-gradient {
+  background: linear-gradient(135deg, #DE7272 0%, #FA8469 50%, #FFCA88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.shadow-ilmora {
+  box-shadow: 0 14px 32px -6px rgba(222, 114, 114, 0.42);
+}
+
+.shadow-ilmora-glow {
+  box-shadow: 0 0 35px rgba(255, 202, 136, 0.5), 0 0 15px rgba(222, 114, 114, 0.3);
+}
+
+.shadow-card-elevate {
+  box-shadow: 0 18px 40px -12px rgba(17, 13, 27, 0.12), 0 4px 12px -2px rgba(222, 114, 114, 0.08);
+}
+
+/* 3D Book Cover Realism */
+.book-perspective {
+  perspective: 1200px;
+}
+
+.book-card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.book-card-3d:hover {
+  transform: translateY(-8px) rotateY(-8deg) rotateX(4deg);
+}
+
+.book-spine-effect {
+  box-shadow: inset 8px 0 14px -2px rgba(0, 0, 0, 0.5),
+              inset 1px 0 2px rgba(255, 255, 255, 0.25),
+              3px 6px 18px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Glassmorphism */
+.glass-effect {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Animations */
+@keyframes cart-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.35) rotate(-6deg);
+  }
+  60% {
+    transform: scale(1.15) rotate(6deg);
+  }
+}
+
+.animate-cart-bump {
+  animation: cart-bounce 0.4s ease-in-out;
+}
+
+@keyframes slideProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(222, 114, 114, 0.35);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 202, 136, 0.35);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(222, 114, 114, 0.65);
+}
