@@ -14,7 +14,13 @@ export default function QuickSearchModal({ open, onClose, onSelectBook }) {
     if (open) {
       setQuery('');
       setTimeout(() => inputRef.current?.focus(), 50);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   useEffect(() => {

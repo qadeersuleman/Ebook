@@ -39,6 +39,9 @@ export default function CartDrawer() {
     } else {
       document.body.style.overflow = '';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isCartOpen]);
 
   if (!isCartOpen) return null;

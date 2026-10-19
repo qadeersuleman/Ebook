@@ -26,13 +26,17 @@ export default function BookModal({ book, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll only when modal is actively open
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    if (book) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
     return () => {
       document.body.style.overflow = '';
     };
-  }, []);
+  }, [book]);
 
   if (!book) return null;
 

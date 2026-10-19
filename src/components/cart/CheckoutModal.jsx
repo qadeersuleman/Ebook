@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '../ui/Icon.jsx';
 import { useCart } from '../../context/CartContext.jsx';
@@ -15,6 +15,18 @@ export default function CheckoutModal() {
   const [paymentMethod, setPaymentMethod] = useState('easypaisa');
   const [isSuccess, setIsSuccess] = useState(false);
   const [orderId, setOrderId] = useState('');
+
+  // Prevent body scroll only when checkout modal is actively open
+  useEffect(() => {
+    if (isCheckoutOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isCheckoutOpen]);
 
   if (!isCheckoutOpen) return null;
 

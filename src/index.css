@@ -60,6 +60,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   body {
@@ -69,6 +71,9 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     transition: background-color 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
   }
 
   .dark body {
